@@ -1,7 +1,7 @@
 {
   "name": "Deformed map of Japan",
   "author": "chizutodesign",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "CC0-1.0",
   "repository": "https://github.com/chizutodesign/japan-deformed-map",
   "grid": {
@@ -15,7 +15,7 @@
     "rendering": "地図として描画する場合は dist/japan.svg（県名入り・角丸）を取得して使うのが最も簡単です。URLは svg_url / svg_url_fallback を参照してください。このグリッドのセルをそのまま1つずつ描くと、都道府県が分割されたタイル状の表現になります",
     "coloring": "値で塗り分ける場合も同じ dist/japan.svg を使い、path#JP-13 のような id を指定して fill を変えてください。県名は別グループ（g#labels と、その下敷きの白い縁取り g#label-halo）なので消えず、塗りが濃くても薄くてもそのまま読めます。文字色を変える必要はありません",
     "rendering_from_this_file": "SVGを取得できない場合はこのファイルだけでも描画できます。手順は3つです。(1) 同じ文字のセルを1つの矩形に結合する（47県すべてがちょうど1つの矩形になります。セルを1つずつ描かないこと）。(2) 角をセル幅の1/3程度で丸め、県どうしに少し隙間をあける。(3) 各矩形の中心に県名を置く。県名がないと、デフォルメされた矩形がどの県なのか読み手には判別できません",
-    "svg_url": "https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.0/dist/japan.svg",
+    "svg_url": "https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.1/dist/japan.svg",
     "svg_url_fallback": "https://raw.githubusercontent.com/chizutodesign/japan-deformed-map/main/dist/japan.svg"
   },
   "legend": {
