@@ -27,6 +27,7 @@ PAD = 5          # viewBox の外周パディング（線のクリップ防止�
 FONT = ('"IPAGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", '
         '"Noto Sans JP", "Yu Gothic", Meiryo, sans-serif')
 FONT_SIZE = 7    # ラベルの文字サイズ（最小の県が 20 units 角なので 2文字が収まる）
+HALO = 1.2       # 県名の縁取りの太さ。太いと「白い座布団」に見え、細いと濃い塗りで沈む
 
 
 def load():
@@ -177,7 +178,7 @@ def labels(data, bykey, color="#333333", halo="#FFFFFF"):
         out.append("\t</g>\n")
         return "".join(out)
 
-    return (group("label-halo", f'fill="{halo}" stroke="{halo}" stroke-width="2" '
+    return (group("label-halo", f'fill="{halo}" stroke="{halo}" stroke-width="{HALO}" '
                                 f'stroke-linejoin="round"')
             + group("labels", f'fill="{color}"'))
 

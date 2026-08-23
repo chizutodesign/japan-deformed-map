@@ -53,7 +53,7 @@
 		<polygon id="JP-47" data-name="沖縄県" data-romaji="Okinawa" points="0,120 0,140 20,140 20,120"><title>沖縄県</title></polygon>
 	</g>
 	<path id="okinawa-bracket" fill="none" stroke="#333333" stroke-width="0.5" stroke-linecap="round" d="M0,150 L27,150 A3,3 0 0 0 30,147 L30,120"/>
-	<g id="label-halo" font-family='"IPAGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif' font-size="7" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round">
+	<g id="label-halo" font-family='"IPAGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif' font-size="7" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round">
 		<text x="250" y="15" dominant-baseline="central">北海道</text>
 		<text x="245" y="50" dominant-baseline="central">青森</text>
 		<text x="265" y="70" dominant-baseline="central">岩手</text>

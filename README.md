@@ -41,14 +41,14 @@
 
 SVG1枚だけ欲しい場合は、次のURLを開いて保存してください。
 
-https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.1/dist/japan.svg
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.2/dist/japan.svg
 
 ### HTMLで表示する
 
 自分のWebページのHTMLに次の1行を書くと、地図が画像として表示されます。ファイルを自分のサーバーに置く必要はありません。
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.1/dist/japan.svg" alt="日本地図">
+<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.2/dist/japan.svg" alt="日本地図">
 ```
 
 ### JavaScriptで塗り分ける
@@ -76,7 +76,7 @@ document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 
 ```
 塗り分けには県名入り・角丸のSVGを使ってください。
-https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.1/dist/japan.svg
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.2/dist/japan.svg
 ```
 
 SVGを取得できない環境のAIは、JSONだけで描こうとします。その場合も `usage.rendering_from_this_file` に「セルを県ごとに結合し、角を丸め、県名を置く」手順を書いてあるので、指示なしでも近い結果になります。
