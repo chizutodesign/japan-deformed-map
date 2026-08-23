@@ -41,14 +41,14 @@
 
 SVG1枚だけ欲しい場合は、次のURLを開いて保存してください。
 
-https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.1/svg/japan.svg
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.2/svg/japan.svg
 
 ### HTMLで表示する
 
 自分のWebページのHTMLに次の1行を書くと、地図が画像として表示されます。ファイルを自分のサーバーに置く必要はありません。
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.1/svg/japan.svg" alt="日本地図">
+<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.2/svg/japan.svg" alt="日本地図">
 ```
 
 ### JavaScriptで塗り分ける
@@ -69,7 +69,7 @@ document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 
 ```
 この地図で都道府県別の森林率を塗り分けてください。
-https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.1/svg/japan.svg
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v3.0.2/svg/japan.svg
 ```
 
 各都道府県には `id="JP-13"`（ISO 3166-2:JP）が付いているので、AIは統計データと突き合わせて塗り分けられます。県名は白い縁取り付きで入っているため、濃い色で塗っても読めます。
