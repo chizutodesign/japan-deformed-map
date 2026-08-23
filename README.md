@@ -19,6 +19,15 @@
 | `build/preview.py` | README用プレビュー画像の生成（要 cairosvg） |
 | `examples/` | 使用例（CSS Grid描画・SVG塗り分け） |
 
+## どちらを使うか
+
+| やりたいこと | 使うファイル |
+|---|---|
+| 地図として表示する・塗り分ける | `dist/japan.svg` / `dist/japan-rounded.svg` |
+| 隣接県を調べる・方角で絞り込む・データと結合する | `data/japan.grid.json` |
+
+グリッドJSONのセルをそのまま描画すると、都道府県が分割されたタイル状の表現になります。それを意図している場合を除き、描画にはSVGを使ってください。
+
 ## 使い方
 
 ### ダウンロードして使う
@@ -57,6 +66,8 @@ document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 このJSONはデフォルメ日本地図です。太平洋ベルトの県だけを
 色分けしたSVGを、legendのコードを使って生成してください。
 ```
+
+描画そのものを頼む場合は、`dist/japan.svg` を渡すか、「塗り分けは dist/japan.svg を使って」と添えてください。
 
 ## データ形式
 

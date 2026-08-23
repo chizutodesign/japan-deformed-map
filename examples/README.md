@@ -12,7 +12,9 @@ python3 -m http.server
 
 ## css-grid.html
 
-`data/japan.grid.json` を読み込み、CSS Grid で1セル1マスとして描画します。セルにマウスを乗せると県名が表示されます。SVGを使わずJSONだけで地図を描く例です。
+`data/japan.grid.json` だけで地図を描く例です。1セル=1要素で並べたうえで、隣のセルが別の県のときだけ境界線を引いて、都道府県として結合して見えるようにしています。マウスを乗せるとその県全体が明るくなり、県名が表示されます。
+
+単に地図を表示・塗り分けたいだけなら、都道府県が結合済みの `dist/japan.svg` を使う方が簡単です。
 
 ![css-grid.html の実行画面](css-grid.png)
 

@@ -4,10 +4,16 @@
   リポジトリのルートで:  python3 -m http.server
   → http://localhost:8000/examples/css-grid.html
 -->
+<!--
+  このサンプルは japan.grid.json だけで地図を描くデモです。
+  1セル=1要素で描き、隣のセルが別の県のときだけ境界線を引いて県を見分けられるようにしています。
+  単に地図を表示・塗り分けたいだけなら、都道府県が結合済みの dist/japan.svg を使う方が簡単です
+  （svg-choropleth.html を参照）。
+-->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>japan.grid.json を CSS Grid で描画する例</title>
+<title>japan.grid.json を CSS Grid で描画する例（県境を判定して結合）</title>
 <style>
   body { font-family: sans-serif; background: #fafafa; }
   #map {
@@ -16,9 +22,9 @@
     aspect-ratio: 28 / 25;
     margin: 2rem auto;
   }
-  #map div { border-radius: 15%; }
+  #map div { box-sizing: border-box; }
   #map div.land { background: #F5B090; cursor: pointer; }
-  #map div.land:hover { background: #F09082; }
+  #map div.land.hover { background: #F09082; }
 </style>
 </head>
 <body>
@@ -31,16 +37,30 @@ fetch("../data/japan.grid.json")
     const map = document.getElementById("map");
     const info = document.getElementById("info");
     const { cols, rows } = data.grid;
+    const byCode = {};
     map.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     data.rows.forEach((row, r) => {
       [...row].forEach((ch, c) => {
         const cell = document.createElement("div");
+        // 隣のセルが別の県（または海）なら、その辺に境界線を引く。
+        // 同じ県のセル同士は線が入らないので、1セル=1要素でも県として結合して見える。
+        const at = (rr, cc) => (data.rows[rr] || "")[cc] || ".";
         if (ch !== ".") {
+          if (ch !== at(r, c + 1)) cell.style.borderRight  = "2px solid #fff";
+          if (ch !== at(r, c - 1)) cell.style.borderLeft   = "2px solid #fff";
+          if (ch !== at(r + 1, c)) cell.style.borderBottom = "2px solid #fff";
+          if (ch !== at(r - 1, c)) cell.style.borderTop    = "2px solid #fff";
           const pref = data.legend[ch];
           cell.className = "land";
           cell.dataset.code = pref.code;
           cell.title = pref.name;
-          cell.onmouseenter = () => info.textContent = `${pref.name} (JP-${pref.code})`;
+          // 同じ県のセルをまとめて持っておき、ホバー時は県全体を明るくする
+          (byCode[ch] ||= []).push(cell);
+          cell.onmouseenter = () => {
+            info.textContent = `${pref.name} (JP-${pref.code})`;
+            byCode[ch].forEach(el => el.classList.add("hover"));
+          };
+          cell.onmouseleave = () => byCode[ch].forEach(el => el.classList.remove("hover"));
         }
         map.appendChild(cell);
       });
