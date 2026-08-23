@@ -1,8 +1,9 @@
 {
   "name": "Deformed map of Japan",
   "author": "chizutodesign",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "CC0-1.0",
+  "repository": "https://github.com/chizutodesign/japan-deformed-map",
   "grid": {
     "cols": 28,
     "rows": 25,
@@ -10,8 +11,10 @@
     "note": "'.'=sea / 1 letter = 1 cell. SVG output uses 10 units per cell."
   },
   "usage": {
-    "this_file": "隣接判定・方角の抽出・データ結合・分析のためのグリッド形式です",
-    "rendering": "地図として描画する場合は dist/japan.svg または dist/japan-rounded.svg を使ってください。このグリッドのセルをそのまま描くと、都道府県が分割されたタイル状の表現になります"
+    "this_file": "グリッド上の位置関係の取得・データ結合・分析のための形式です。デフォルメのため、隣接関係は実際の地理と一致しない場合があります",
+    "rendering": "地図として描画する場合は dist/japan.svg または dist/japan-rounded.svg を使ってください。このグリッドのセルをそのまま描くと、都道府県が分割されたタイル状の表現になります",
+    "rendering_from_this_file": "このファイルだけで描画する場合は、同じ文字が連続するセルを1つの図形に結合してから描いてください（セルを1つずつ矩形で描かないこと）",
+    "svg_url": "https://raw.githubusercontent.com/chizutodesign/japan-deformed-map/main/dist/japan.svg"
   },
   "legend": {
     "a": {
