@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """README用プレビュー画像を生成する（要 cairosvg）。
-地方区分で塗り分けた例として dist/japan-rounded-labeled.svg を着色しPNG化。
+地方区分で塗り分けた例として dist/japan.svg を着色しPNG化。
 
 usage: python3 build/preview.py
 """
@@ -27,7 +27,7 @@ def color(code):
         if n in rng:
             return col
 
-with open(os.path.join(ROOT, "dist", "japan-rounded-labeled.svg"), encoding="utf-8") as f:
+with open(os.path.join(ROOT, "dist", "japan.svg"), encoding="utf-8") as f:
     svg = f.read()
 svg = re.sub(r'(<path id="JP-(\d+)")',
              lambda m: f'{m.group(1)} fill="{color(m.group(2))}"', svg)

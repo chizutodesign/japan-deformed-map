@@ -58,7 +58,7 @@ const CLASSES = [
 
 Promise.all([
   fetch("../data/japan.grid.json").then(r => r.json()),
-  fetch("../dist/japan-rounded.svg").then(r => r.text()),
+  fetch("../dist/japan-nolabel.svg").then(r => r.text()),
 ]).then(([grid, svg]) => {
   document.getElementById("wrap").innerHTML = svg;
 

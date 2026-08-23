@@ -42,7 +42,7 @@ def main():
         print("NG: legend のコードが 01-47 と一致しません")
         ok = False
 
-    with open(os.path.join(ROOT, "dist", "japan.svg"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "dist", "japan-flat-nolabel.svg"), encoding="utf-8") as f:
         svg = f.read()
 
     got = {}
@@ -60,7 +60,7 @@ def main():
                     got[(c, r)] = code
 
     # ラベル版に47県すべての名前が入っているか
-    for fn in ("japan-labeled.svg", "japan-rounded-labeled.svg"):
+    for fn in ("japan.svg", "japan-flat.svg"):
         path = os.path.join(ROOT, "dist", fn)
         if not os.path.exists(path):
             print(f"NG: dist/{fn} がありません")
