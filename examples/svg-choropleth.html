@@ -25,13 +25,14 @@
   #legend span { display: flex; align-items: center; gap: .35rem; }
   #legend i { width: 1rem; height: 1rem; border-radius: 3px; }
   #note { text-align: center; font-size: .8rem; color: #777; }
+  #wrap text { font-weight: 700; font-size: 7.5px; text-anchor: middle; pointer-events: none; }
 </style>
 </head>
 <body>
 <h1 id="title">県名の画数合計</h1>
 <div id="wrap"></div>
 <div id="legend"></div>
-<p id="note">各県にマウスを乗せると画数が出ます</p>
+<p id="note">県名を直接置いているので、地理に詳しくなくてもどこがどの県か分かります</p>
 <script>
 // 県名に使われる漢字の画数
 const STROKES = {
@@ -49,12 +50,11 @@ const STROKES = {
 // 境界値は四分位（各区分の県数がほぼ揃う位置）で決めた。
 // 実データは最大値までを等分割すると大半が最小区分に寄るので、この決め方が無難。
 const CLASSES = [
-  { min: 30, color: "#A63A2E", label: "30画以上" },
-  { min: 27, color: "#D2604B", label: "27〜29画" },
-  { min: 23, color: "#E88A6B", label: "23〜26画" },
-  { min:  0, color: "#F5B090", label: "22画以下" },
+  { min: 30, color: "#A63A2E", ink: "#FFFFFF", label: "30画以上" },
+  { min: 27, color: "#D2604B", ink: "#FFFFFF", label: "27〜29画" },
+  { min: 23, color: "#E88A6B", ink: "#333333", label: "23〜26画" },
+  { min:  0, color: "#F5B090", ink: "#333333", label: "22画以下" },
 ];
-const color = v => CLASSES.find(c => v >= c.min).color;
 
 Promise.all([
   fetch("../data/japan.grid.json").then(r => r.json()),
@@ -62,11 +62,36 @@ Promise.all([
 ]).then(([grid, svg]) => {
   document.getElementById("wrap").innerHTML = svg;
 
-  for (const pref of Object.values(grid.legend)) {
-    const strokes = [...pref.name].reduce((n, ch) => n + STROKES[ch], 0);
+  // 各県のセル範囲＝ラベル位置。全県が矩形なので中心は必ずその県の内側に入る。
+  const box = {};
+  grid.rows.forEach((row, r) => [...row].forEach((ch, c) => {
+    if (ch === ".") return;
+    const b = box[ch] ||= { x0: c, x1: c, y0: r, y1: r };
+    b.x0 = Math.min(b.x0, c); b.x1 = Math.max(b.x1, c);
+    b.y0 = Math.min(b.y0, r); b.y1 = Math.max(b.y1, r);
+  }));
+
+  const svgEl = document.querySelector("#wrap svg");
+  const NS = "http://www.w3.org/2000/svg";
+  const shortName = n => n === "北海道" ? n : n.replace(/[都府県]$/, "");
+
+  for (const [ch, pref] of Object.entries(grid.legend)) {
+    const strokes = [...pref.name].reduce((n, k) => n + STROKES[k], 0);
+    const cls = CLASSES.find(c => strokes >= c.min);
+
     const path = document.getElementById("JP-" + pref.code);
-    path.setAttribute("fill", color(strokes));
+    path.setAttribute("fill", cls.color);
     path.querySelector("title").textContent = `${pref.name} ${strokes}画`;
+
+    // 県名と数値を2行で置く。文字色は塗りの明るさに応じて白/黒を出し分ける。
+    const b = box[ch];
+    const cx = (b.x0 + b.x1 + 1) * 5, cy = (b.y0 + b.y1 + 1) * 5;
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", cx); t.setAttribute("y", cy);
+    t.setAttribute("fill", cls.ink);
+    t.innerHTML = `<tspan x="${cx}" dy="-0.15em">${shortName(pref.name)}</tspan>`
+                + `<tspan x="${cx}" dy="1.1em">${strokes}</tspan>`;
+    svgEl.appendChild(t);
   }
 
   document.getElementById("legend").innerHTML = CLASSES
