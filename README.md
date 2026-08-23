@@ -15,6 +15,8 @@
 | `dist/japan.svg` | 白地図（境界線あり） |
 | `dist/japan-rounded.svg` | 角丸・県ごとに隙間のあるスタイル |
 | `build/generate.py` | JSON → SVG 生成スクリプト |
+| `build/verify.py` | 生成されたSVGが正データと一致するかの検証スクリプト |
+| `build/preview.py` | README用プレビュー画像の生成（要 cairosvg） |
 | `examples/` | 使用例（CSS Grid描画・SVG塗り分け） |
 
 ## 使い方
@@ -74,11 +76,16 @@ document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 
 ## SVGを再生成する
 
+`dist/` 以下は生成物です。形を変えたいときは `data/japan.grid.json` を編集して、再生成と検証をこの順に実行してください。
+
 ```
 python3 build/generate.py
+python3 build/verify.py
 ```
 
-`dist/` 以下は生成物です。形を変えたいときは `data/japan.grid.json` を編集して再生成してください。
+`verify.py` は、生成されたSVGが正データと同じセルを占めているか・全座標が整数か・47都道府県のコードが揃っているかを検証します。`OK:` と表示されれば成功です（不一致があれば終了コード1で落ちます）。
+
+SVGを直接編集しないでください。次の再生成で上書きされます。
 
 ## ライセンス
 
