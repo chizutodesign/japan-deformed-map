@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>japan.grid.json を CSS Grid で描画する例</title>
+<style>
+  body { font-family: sans-serif; background: #fafafa; }
+  #map {
+    display: grid;
+    width: min(90vmin, 700px);
+    aspect-ratio: 28 / 25;
+    margin: 2rem auto;
+  }
+  #map div { border-radius: 15%; }
+  #map div.land { background: #F5B090; cursor: pointer; }
+  #map div.land:hover { background: #F09082; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<p id="info" style="text-align:center">セルにマウスを乗せると県名が出ます</p>
+<script>
+fetch("../data/japan.grid.json")
+  .then(r => r.json())
+  .then(data => {
+    const map = document.getElementById("map");
+    const info = document.getElementById("info");
+    const { cols, rows } = data.grid;
+    map.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    data.rows.forEach((row, r) => {
+      [...row].forEach((ch, c) => {
+        const cell = document.createElement("div");
+        if (ch !== ".") {
+          const pref = data.legend[ch];
+          cell.className = "land";
+          cell.dataset.code = pref.code;
+          cell.title = pref.name;
+          cell.onmouseenter = () => info.textContent = `${pref.name} (JP-${pref.code})`;
+        }
+        map.appendChild(cell);
+      });
+    });
+  });
+</script>
+</body>
+</html>

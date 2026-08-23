@@ -1,0 +1,295 @@
+{
+  "name": "Deformed map of Japan",
+  "author": "chizutodesign",
+  "version": "1.0.0",
+  "grid": {
+    "cols": 28,
+    "rows": 25,
+    "cell_size_mm": 5,
+    "note": "'.'=sea / 1 letter = 1 cell. SVG output uses 10 units per cell."
+  },
+  "legend": {
+    "a": {
+      "code": "01",
+      "name": "北海道",
+      "romaji": "Hokkaido"
+    },
+    "b": {
+      "code": "02",
+      "name": "青森県",
+      "romaji": "Aomori"
+    },
+    "c": {
+      "code": "03",
+      "name": "岩手県",
+      "romaji": "Iwate"
+    },
+    "d": {
+      "code": "04",
+      "name": "宮城県",
+      "romaji": "Miyagi"
+    },
+    "e": {
+      "code": "05",
+      "name": "秋田県",
+      "romaji": "Akita"
+    },
+    "f": {
+      "code": "06",
+      "name": "山形県",
+      "romaji": "Yamagata"
+    },
+    "g": {
+      "code": "07",
+      "name": "福島県",
+      "romaji": "Fukushima"
+    },
+    "h": {
+      "code": "08",
+      "name": "茨城県",
+      "romaji": "Ibaraki"
+    },
+    "i": {
+      "code": "09",
+      "name": "栃木県",
+      "romaji": "Tochigi"
+    },
+    "j": {
+      "code": "10",
+      "name": "群馬県",
+      "romaji": "Gunma"
+    },
+    "k": {
+      "code": "11",
+      "name": "埼玉県",
+      "romaji": "Saitama"
+    },
+    "l": {
+      "code": "12",
+      "name": "千葉県",
+      "romaji": "Chiba"
+    },
+    "m": {
+      "code": "13",
+      "name": "東京都",
+      "romaji": "Tokyo"
+    },
+    "n": {
+      "code": "14",
+      "name": "神奈川県",
+      "romaji": "Kanagawa"
+    },
+    "o": {
+      "code": "15",
+      "name": "新潟県",
+      "romaji": "Niigata"
+    },
+    "p": {
+      "code": "16",
+      "name": "富山県",
+      "romaji": "Toyama"
+    },
+    "q": {
+      "code": "17",
+      "name": "石川県",
+      "romaji": "Ishikawa"
+    },
+    "r": {
+      "code": "18",
+      "name": "福井県",
+      "romaji": "Fukui"
+    },
+    "s": {
+      "code": "19",
+      "name": "山梨県",
+      "romaji": "Yamanashi"
+    },
+    "t": {
+      "code": "20",
+      "name": "長野県",
+      "romaji": "Nagano"
+    },
+    "u": {
+      "code": "21",
+      "name": "岐阜県",
+      "romaji": "Gifu"
+    },
+    "v": {
+      "code": "22",
+      "name": "静岡県",
+      "romaji": "Shizuoka"
+    },
+    "w": {
+      "code": "23",
+      "name": "愛知県",
+      "romaji": "Aichi"
+    },
+    "x": {
+      "code": "24",
+      "name": "三重県",
+      "romaji": "Mie"
+    },
+    "y": {
+      "code": "25",
+      "name": "滋賀県",
+      "romaji": "Shiga"
+    },
+    "z": {
+      "code": "26",
+      "name": "京都府",
+      "romaji": "Kyoto"
+    },
+    "A": {
+      "code": "27",
+      "name": "大阪府",
+      "romaji": "Osaka"
+    },
+    "B": {
+      "code": "28",
+      "name": "兵庫県",
+      "romaji": "Hyogo"
+    },
+    "C": {
+      "code": "29",
+      "name": "奈良県",
+      "romaji": "Nara"
+    },
+    "D": {
+      "code": "30",
+      "name": "和歌山県",
+      "romaji": "Wakayama"
+    },
+    "E": {
+      "code": "31",
+      "name": "鳥取県",
+      "romaji": "Tottori"
+    },
+    "F": {
+      "code": "32",
+      "name": "島根県",
+      "romaji": "Shimane"
+    },
+    "G": {
+      "code": "33",
+      "name": "岡山県",
+      "romaji": "Okayama"
+    },
+    "H": {
+      "code": "34",
+      "name": "広島県",
+      "romaji": "Hiroshima"
+    },
+    "I": {
+      "code": "35",
+      "name": "山口県",
+      "romaji": "Yamaguchi"
+    },
+    "J": {
+      "code": "36",
+      "name": "徳島県",
+      "romaji": "Tokushima"
+    },
+    "K": {
+      "code": "37",
+      "name": "香川県",
+      "romaji": "Kagawa"
+    },
+    "L": {
+      "code": "38",
+      "name": "愛媛県",
+      "romaji": "Ehime"
+    },
+    "M": {
+      "code": "39",
+      "name": "高知県",
+      "romaji": "Kochi"
+    },
+    "N": {
+      "code": "40",
+      "name": "福岡県",
+      "romaji": "Fukuoka"
+    },
+    "O": {
+      "code": "41",
+      "name": "佐賀県",
+      "romaji": "Saga"
+    },
+    "P": {
+      "code": "42",
+      "name": "長崎県",
+      "romaji": "Nagasaki"
+    },
+    "Q": {
+      "code": "43",
+      "name": "熊本県",
+      "romaji": "Kumamoto"
+    },
+    "R": {
+      "code": "44",
+      "name": "大分県",
+      "romaji": "Oita"
+    },
+    "S": {
+      "code": "45",
+      "name": "宮崎県",
+      "romaji": "Miyazaki"
+    },
+    "T": {
+      "code": "46",
+      "name": "鹿児島県",
+      "romaji": "Kagoshima"
+    },
+    "U": {
+      "code": "47",
+      "name": "沖縄県",
+      "romaji": "Okinawa"
+    }
+  },
+  "rows": [
+    "......................aaaaaa",
+    "......................aaaaaa",
+    "......................aaaaaa",
+    "............................",
+    "......................bbbbb.",
+    "......................bbbbb.",
+    "......................eeeccc",
+    "......................eeeccc",
+    "......................fffddd",
+    "......................fffddd",
+    "................qq..oooogggg",
+    "................qqppoooogggg",
+    "UU..............qqppttjjiihh",
+    "UU..............qqppttjjiihh",
+    ".....IIFFEEBBzzrrruuttkkkkhh",
+    ".....IIFFEEBBzzrrruuttkkkkll",
+    ".....IIHHGGBBzzyyyuuttssmmll",
+    "OONNN..HHGGBBzzyyyuuttssmmll",
+    "OONNN.......AACCxxwwvvvnnn..",
+    "PPQQRR.LLKK.AACCxxwwvvvnnn..",
+    "PPQQRR.LLKK.DDDDxx..........",
+    "..QQSS.MMJJ.DDDDxx..........",
+    "..QQSS.MMJJ.................",
+    "..TTTT......................",
+    "..TTTT......................"
+  ],
+  "annotations": {
+    "okinawa_bracket": {
+      "type": "polyline",
+      "comment": "沖縄の位置を示す引き出し線（セル座標）",
+      "points": [
+        [
+          0,
+          15
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          3,
+          12
+        ]
+      ]
+    }
+  }
+}

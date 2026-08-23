@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>dist/japan-rounded.svg を読み込んで塗り分ける例</title>
+<style>
+  body { font-family: sans-serif; background: #fff; }
+  #wrap { width: min(90vmin, 700px); margin: 2rem auto; }
+  #wrap svg { width: 100%; height: auto; }
+  #wrap path { transition: fill .15s; }
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<script>
+// 塗り分けたい値（例）。JP-コードをキーにする
+const values = { "JP-01": 152, "JP-13": 90, "JP-23": 123, "JP-27": 108,
+                 "JP-28": 82, "JP-14": 55, "JP-12": 31, "JP-11": 29 };
+
+const color = v =>
+  v === undefined ? "#D8EBF5" :   // データなし
+  v >= 100 ? "#E06C60" :
+  v >= 50  ? "#F09082" :
+  v >= 10  ? "#FACEA7" : "#FEEAB4";
+
+fetch("../dist/japan-rounded.svg")
+  .then(r => r.text())
+  .then(text => {
+    document.getElementById("wrap").innerHTML = text;
+    document.querySelectorAll("#wrap path[id^='JP-']").forEach(p => {
+      p.setAttribute("fill", color(values[p.id]));
+    });
+  });
+</script>
+</body>
+</html>

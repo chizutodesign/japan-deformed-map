@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 290 260" role="img" aria-labelledby="map-title">
+	<title id="map-title">Deformed map of Japan</title>
+	<!-- generated from data/japan.grid.json - do not edit by hand -->
+	<!-- 1 cell = 10 units / grid 28 x 25 -->
+	<g id="prefectures" fill="#E8E8E8" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round">
+		<polygon id="JP-01" data-name="北海道" data-romaji="Hokkaido" points="280,30 280,0 220,0 220,30"><title>北海道</title></polygon>
+		<polygon id="JP-02" data-name="青森県" data-romaji="Aomori" points="220,40 220,60 270,60 270,40"><title>青森県</title></polygon>
+		<polygon id="JP-03" data-name="岩手県" data-romaji="Iwate" points="250,60 250,80 280,80 280,60"><title>岩手県</title></polygon>
+		<polygon id="JP-04" data-name="宮城県" data-romaji="Miyagi" points="280,80 250,80 250,100 280,100"><title>宮城県</title></polygon>
+		<polygon id="JP-05" data-name="秋田県" data-romaji="Akita" points="250,80 250,60 220,60 220,80"><title>秋田県</title></polygon>
+		<polygon id="JP-06" data-name="山形県" data-romaji="Yamagata" points="250,80 220,80 220,100 250,100"><title>山形県</title></polygon>
+		<polygon id="JP-07" data-name="福島県" data-romaji="Fukushima" points="280,120 280,100 240,100 240,120"><title>福島県</title></polygon>
+		<polygon id="JP-08" data-name="茨城県" data-romaji="Ibaraki" points="260,150 280,150 280,120 260,120"><title>茨城県</title></polygon>
+		<polygon id="JP-09" data-name="栃木県" data-romaji="Tochigi" points="260,120 240,120 240,140 260,140"><title>栃木県</title></polygon>
+		<polygon id="JP-10" data-name="群馬県" data-romaji="Gunma" points="220,140 240,140 240,120 220,120"><title>群馬県</title></polygon>
+		<polygon id="JP-11" data-name="埼玉県" data-romaji="Saitama" points="220,140 220,160 260,160 260,140"><title>埼玉県</title></polygon>
+		<polygon id="JP-12" data-name="千葉県" data-romaji="Chiba" points="280,150 260,150 260,180 280,180"><title>千葉県</title></polygon>
+		<polygon id="JP-13" data-name="東京都" data-romaji="Tokyo" points="260,160 240,160 240,180 260,180"><title>東京都</title></polygon>
+		<polygon id="JP-14" data-name="神奈川県" data-romaji="Kanagawa" points="260,200 260,180 230,180 230,200"><title>神奈川県</title></polygon>
+		<polygon id="JP-15" data-name="新潟県" data-romaji="Niigata" points="200,120 240,120 240,100 200,100"><title>新潟県</title></polygon>
+		<polygon id="JP-16" data-name="富山県" data-romaji="Toyama" points="180,140 200,140 200,110 180,110"><title>富山県</title></polygon>
+		<polygon id="JP-17" data-name="石川県" data-romaji="Ishikawa" points="160,100 160,140 180,140 180,100"><title>石川県</title></polygon>
+		<polygon id="JP-18" data-name="福井県" data-romaji="Fukui" points="150,140 150,160 180,160 180,140"><title>福井県</title></polygon>
+		<polygon id="JP-19" data-name="山梨県" data-romaji="Yamanashi" points="240,160 220,160 220,180 240,180"><title>山梨県</title></polygon>
+		<polygon id="JP-20" data-name="長野県" data-romaji="Nagano" points="220,120 200,120 200,180 220,180"><title>長野県</title></polygon>
+		<polygon id="JP-21" data-name="岐阜県" data-romaji="Gifu" points="200,140 180,140 180,180 200,180"><title>岐阜県</title></polygon>
+		<polygon id="JP-22" data-name="静岡県" data-romaji="Shizuoka" points="230,180 200,180 200,200 230,200"><title>静岡県</title></polygon>
+		<polygon id="JP-23" data-name="愛知県" data-romaji="Aichi" points="200,180 180,180 180,200 200,200"><title>愛知県</title></polygon>
+		<polygon id="JP-24" data-name="三重県" data-romaji="Mie" points="160,220 180,220 180,180 160,180"><title>三重県</title></polygon>
+		<polygon id="JP-25" data-name="滋賀県" data-romaji="Shiga" points="180,180 180,160 150,160 150,180"><title>滋賀県</title></polygon>
+		<polygon id="JP-26" data-name="京都府" data-romaji="Kyoto" points="130,140 130,180 150,180 150,140"><title>京都府</title></polygon>
+		<polygon id="JP-27" data-name="大阪府" data-romaji="Osaka" points="140,200 140,180 120,180 120,200"><title>大阪府</title></polygon>
+		<polygon id="JP-28" data-name="兵庫県" data-romaji="Hyogo" points="130,180 130,140 110,140 110,180"><title>兵庫県</title></polygon>
+		<polygon id="JP-29" data-name="奈良県" data-romaji="Nara" points="140,180 140,200 160,200 160,180"><title>奈良県</title></polygon>
+		<polygon id="JP-30" data-name="和歌山県" data-romaji="Wakayama" points="160,220 160,200 120,200 120,220"><title>和歌山県</title></polygon>
+		<polygon id="JP-31" data-name="鳥取県" data-romaji="Tottori" points="110,160 110,140 90,140 90,160"><title>鳥取県</title></polygon>
+		<polygon id="JP-32" data-name="島根県" data-romaji="Shimane" points="70,160 90,160 90,140 70,140"><title>島根県</title></polygon>
+		<polygon id="JP-33" data-name="岡山県" data-romaji="Okayama" points="90,160 90,180 110,180 110,160"><title>岡山県</title></polygon>
+		<polygon id="JP-34" data-name="広島県" data-romaji="Hiroshima" points="70,160 70,180 90,180 90,160"><title>広島県</title></polygon>
+		<polygon id="JP-35" data-name="山口県" data-romaji="Yamaguchi" points="50,170 70,170 70,140 50,140"><title>山口県</title></polygon>
+		<polygon id="JP-36" data-name="徳島県" data-romaji="Tokushima" points="90,210 90,230 110,230 110,210"><title>徳島県</title></polygon>
+		<polygon id="JP-37" data-name="香川県" data-romaji="Kagawa" points="90,210 110,210 110,190 90,190"><title>香川県</title></polygon>
+		<polygon id="JP-38" data-name="愛媛県" data-romaji="Ehime" points="90,190 70,190 70,210 90,210"><title>愛媛県</title></polygon>
+		<polygon id="JP-39" data-name="高知県" data-romaji="Kochi" points="70,210 70,230 90,230 90,210"><title>高知県</title></polygon>
+		<polygon id="JP-40" data-name="福岡県" data-romaji="Fukuoka" points="20,170 20,190 50,190 50,170"><title>福岡県</title></polygon>
+		<polygon id="JP-41" data-name="佐賀県" data-romaji="Saga" points="20,170 0,170 0,190 20,190"><title>佐賀県</title></polygon>
+		<polygon id="JP-42" data-name="長崎県" data-romaji="Nagasaki" points="0,210 20,210 20,190 0,190"><title>長崎県</title></polygon>
+		<polygon id="JP-43" data-name="熊本県" data-romaji="Kumamoto" points="20,230 40,230 40,190 20,190"><title>熊本県</title></polygon>
+		<polygon id="JP-44" data-name="大分県" data-romaji="Oita" points="60,210 60,190 40,190 40,210"><title>大分県</title></polygon>
+		<polygon id="JP-45" data-name="宮崎県" data-romaji="Miyazaki" points="40,210 40,230 60,230 60,210"><title>宮崎県</title></polygon>
+		<polygon id="JP-46" data-name="鹿児島県" data-romaji="Kagoshima" points="60,250 60,230 20,230 20,250"><title>鹿児島県</title></polygon>
+		<polygon id="JP-47" data-name="沖縄県" data-romaji="Okinawa" points="0,120 0,140 20,140 20,120"><title>沖縄県</title></polygon>
+	</g>
+	<path id="okinawa-bracket" fill="none" stroke="#333333" stroke-width="0.5" stroke-linecap="round" d="M0,150 L27,150 A3,3 0 0 0 30,147 L30,120"/>
+</svg>
