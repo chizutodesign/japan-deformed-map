@@ -2,6 +2,7 @@
   "name": "Deformed map of Japan",
   "author": "chizutodesign",
   "version": "1.0.0",
+  "license": "CC0-1.0",
   "grid": {
     "cols": 28,
     "rows": 25,
