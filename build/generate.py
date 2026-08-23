@@ -27,7 +27,7 @@ PAD = 5          # viewBox の外周パディング（線のクリップ防止�
 # Illustrator は先頭のフォント名を見て「無い」と警告を出すので、
 # 実機に入っている可能性が高い順に並べる。IPAGothic は Linux 環境向けの保険。
 FONT = ('"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", '
-        '"Noto Sans JP", "IPAGothic", sans-serif')
+        '"Noto Sans JP", sans-serif')
 FONT_SIZE = 7    # ラベルの文字サイズ（最小の県が 20 units 角なので 2文字が収まる）
 BASELINE = "0.4em"  # 文字の縦中央合わせ。dominant-baseline は Illustrator が解釈しないため dy を使う
 HALO = 1.2       # 県名の縁取りの太さ。太いと「白い座布団」に見え、細いと濃い塗りで沈む

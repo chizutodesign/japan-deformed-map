@@ -53,7 +53,7 @@
 		<path id="JP-47" data-name="沖縄県" data-romaji="Okinawa" d="M4,121 A3,3 0 0 0 1,124 L1,136 A3,3 0 0 0 4,139 L16,139 A3,3 0 0 0 19,136 L19,124 A3,3 0 0 0 16,121 Z"><title>沖縄県</title></path>
 	</g>
 	<path id="okinawa-bracket" fill="none" stroke="#333333" stroke-width="0.5" stroke-linecap="round" d="M0,150 L27,150 A3,3 0 0 0 30,147 L30,120"/>
-	<g id="label-halo" font-family='"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "IPAGothic", sans-serif' font-size="7" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round">
+	<g id="label-halo" font-family='"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif' font-size="7" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round">
 		<text x="250" y="15" dy="0.4em">北海道</text>
 		<text x="245" y="50" dy="0.4em">青森</text>
 		<text x="265" y="70" dy="0.4em">岩手</text>
@@ -102,7 +102,7 @@
 		<text x="40" y="240" dy="0.4em">鹿児島</text>
 		<text x="10" y="130" dy="0.4em">沖縄</text>
 	</g>
-	<g id="labels" font-family='"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "IPAGothic", sans-serif' font-size="7" text-anchor="middle" fill="#333333">
+	<g id="labels" font-family='"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif' font-size="7" text-anchor="middle" fill="#333333">
 		<text x="250" y="15" dy="0.4em">北海道</text>
 		<text x="245" y="50" dy="0.4em">青森</text>
 		<text x="265" y="70" dy="0.4em">岩手</text>
