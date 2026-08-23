@@ -66,7 +66,7 @@ document.querySelector("#labels").setAttribute("fill", "#fff");   // 県名を�
 
 ### AIに読ませる
 
-`data/japan.grid.json` は約6.5KBなので、そのままAIチャットに貼れます。グリッドがテキストとして日本列島の形をしているため、位置関係を踏まえた指示ができます。
+`data/japan.grid.json` は約7.5KBなので、そのままAIチャットに貼れます。グリッドがテキストとして日本列島の形をしているため、位置関係を踏まえた指示ができます。
 
 ```
 このJSONはデフォルメ日本地図です。太平洋ベルトの県だけを
@@ -76,9 +76,11 @@ document.querySelector("#labels").setAttribute("fill", "#fff");   // 県名を�
 描画そのものを頼む場合は、**使ってほしいSVGを明示してください。**指定がないとAIはグリッドをそのまま描いてタイル状にしたり、県名のないファイルを選んだりします。
 
 ```
-塗り分けには dist/japan-rounded-labeled.svg（県名入り・角丸）を使ってください。
-https://raw.githubusercontent.com/chizutodesign/japan-deformed-map/main/dist/japan-rounded-labeled.svg
+塗り分けには県名入り・角丸のSVGを使ってください。
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.1.0/dist/japan-rounded-labeled.svg
 ```
+
+SVGを取得できない環境のAIは、JSONだけで描こうとします。その場合も `usage.rendering_from_this_file` に「セルを県ごとに結合し、角を丸め、県名を置く」手順を書いてあるので、指示なしでも近い結果になります。
 
 ## データ形式
 
