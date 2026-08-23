@@ -11,7 +11,7 @@
     "note": "'.'=sea / 1 letter = 1 cell. SVG output uses 10 units per cell."
   },
   "usage": {
-    "this_file": "グリッド上の位置関係の取得・データ結合・分析のための形式です。デフォルメのため、隣接関係は実際の地理と一致しない場合があります",
+    "this_file": "都道府県コードでのデータ結合や、グリッドとして自前で描画するための形式です。デフォルメのため、セルの隣接や上下左右の位置は実際の地理と一致しません（沖縄は引き出し線で本来と異なる位置に置いています）",
     "rendering": "地図として描画する場合は dist/*.svg を使ってください（県名入りは dist/japan-labeled.svg）。このグリッドのセルをそのまま描くと、都道府県が分割されたタイル状の表現になります",
     "rendering_from_this_file": "このファイルだけで描画する場合は、同じ文字が連続するセルを1つの図形に結合してから描いてください（セルを1つずつ矩形で描かないこと）",
     "svg_url": "https://raw.githubusercontent.com/chizutodesign/japan-deformed-map/main/dist/japan.svg"
