@@ -12,8 +12,10 @@
 | ファイル | 内容 |
 |---|---|
 | `data/japan.grid.json` | 正データ（グリッド＋凡例）。編集するのはこのファイルだけ |
-| `dist/japan.svg` | 白地図（境界線あり） |
-| `dist/japan-rounded.svg` | 角丸・県ごとに隙間のあるスタイル |
+| `dist/japan-labeled.svg` | **県名入りの白地図。まずはこれ** |
+| `dist/japan-rounded-labeled.svg` | 県名入り・角丸スタイル |
+| `dist/japan.svg` | 白地図（県名なし。自分でラベルや数値を載せる人向け） |
+| `dist/japan-rounded.svg` | 角丸・県ごとに隙間のあるスタイル（県名なし） |
 | `build/generate.py` | JSON → SVG 生成スクリプト |
 | `build/verify.py` | 生成されたSVGが正データと一致するかの検証スクリプト |
 | `build/preview.py` | README用プレビュー画像の生成（要 cairosvg） |
@@ -23,27 +25,30 @@
 
 | やりたいこと | 使うファイル |
 |---|---|
-| 地図として表示する・塗り分ける | `dist/japan.svg` / `dist/japan-rounded.svg` |
+| そのまま地図として見せる | `dist/japan-labeled.svg` / `dist/japan-rounded-labeled.svg` |
+| 自分でラベルや数値を載せる・塗り分ける | `dist/japan.svg` / `dist/japan-rounded.svg` |
 | 隣接県を調べる・方角で絞り込む・データと結合する | `data/japan.grid.json` |
 
 グリッドJSONのセルをそのまま描画すると、都道府県が分割されたタイル状の表現になります。それを意図している場合を除き、描画にはSVGを使ってください。
+
+デフォルメ地図はどの県も同じような矩形なので、**県名がないと地理に詳しい人以外は読めません**。用途がなければ県名入りの方を選んでください。
 
 ## 使い方
 
 ### ダウンロードして使う
 
-[Releases](https://github.com/chizutodesign/japan-deformed-map/releases/latest) の **Source code (zip)** に一式が入っています。展開して `dist/japan.svg` を Illustrator・Figma・Inkscape などで開けば、そのまま編集できます。
+[Releases](https://github.com/chizutodesign/japan-deformed-map/releases/latest) の **Source code (zip)** に一式が入っています。展開して `dist/japan-labeled.svg` を Illustrator・Figma・Inkscape などで開けば、そのまま編集できます。県名はテキストとして入っているので、文字のまま差し替えや書体変更ができます。
 
 SVG1枚だけ欲しい場合は、次のURLを開いて保存してください。
 
-https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.0.0/dist/japan.svg
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.1.0/dist/japan-labeled.svg
 
 ### HTMLで表示する
 
 自分のWebページのHTMLに次の1行を書くと、地図が画像として表示されます。ファイルを自分のサーバーに置く必要はありません。
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.0.0/dist/japan.svg" alt="日本地図">
+<img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.1.0/dist/japan-labeled.svg" alt="日本地図">
 ```
 
 ### JavaScriptで塗り分ける

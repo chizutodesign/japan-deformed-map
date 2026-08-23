@@ -59,6 +59,22 @@ def main():
                 if inside(c + 0.5, r + 0.5, pts):
                     got[(c, r)] = code
 
+    # ラベル版に47県すべての名前が入っているか
+    for fn in ("japan-labeled.svg", "japan-rounded-labeled.svg"):
+        path = os.path.join(ROOT, "dist", fn)
+        if not os.path.exists(path):
+            print(f"NG: dist/{fn} がありません")
+            ok = False
+            continue
+        with open(path, encoding="utf-8") as f:
+            texts = re.findall(r"<text[^>]*>([^<]+)</text>", f.read())
+        want = sorted(v["name"] if v["name"] == "北海道"
+                      else re.sub(r"[都府県]$", "", v["name"])
+                      for v in data["legend"].values())
+        if sorted(texts) != want:
+            print(f"NG: dist/{fn} のラベルが正データと不一致（{len(texts)}件）")
+            ok = False
+
     if got != truth:
         diff = {k for k in set(truth) | set(got) if truth.get(k) != got.get(k)}
         print(f"NG: セル占有が正データと不一致（{len(diff)}セル）: {sorted(diff)[:10]}")

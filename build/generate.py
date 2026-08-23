@@ -7,17 +7,23 @@ usage:
     python3 build/generate.py
 
 出力:
-    dist/japan.svg          白地図（フラット・白い境界線）
-    dist/japan-rounded.svg  角丸・県ごとに隙間ありのスタイル
+    dist/japan.svg                  白地図（フラット・白い境界線）
+    dist/japan-rounded.svg          角丸・県ごとに隙間ありのスタイル
+    dist/japan-labeled.svg          白地図＋県名ラベル
+    dist/japan-rounded-labeled.svg  角丸＋県名ラベル
 """
 import json
 import os
+import re
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 CELL = 10        # 1セル = 10 SVG units
 PAD = 5          # viewBox の外周パディング（線のクリップ防止）
+FONT = ('"IPAGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", '
+        '"Noto Sans JP", "Yu Gothic", Meiryo, sans-serif')
+FONT_SIZE = 7    # ラベルの文字サイズ（最小の県が 20 units 角なので 2文字が収まる）
 
 
 def load():
@@ -139,6 +145,27 @@ def header(data, w, h):
     )
 
 
+def short_name(name):
+    """ラベル用の短い県名。末尾の都/府/県を落とす（北海道はそのまま）。"""
+    return name if name == "北海道" else re.sub(r"[都府県]$", "", name)
+
+
+def labels(data, bykey, color="#333333"):
+    """県名ラベル。全県が矩形なので外接矩形の中心が必ず県の内側に入る。"""
+    order = sorted(data["legend"].items(), key=lambda kv: kv[1]["code"])
+    out = [f'\t<g id="labels" font-family=\'{FONT}\' font-size="{FONT_SIZE}" '
+           f'text-anchor="middle" fill="{color}">\n']
+    for ch, meta in order:
+        xs = [c for c, _ in bykey[ch]]
+        ys = [r for _, r in bykey[ch]]
+        cx = (min(xs) + max(xs) + 1) * CELL / 2
+        cy = (min(ys) + max(ys) + 1) * CELL / 2
+        out.append(f'\t\t<text x="{g(cx)}" y="{g(cy)}" dominant-baseline="central">'
+                   f'{short_name(meta["name"])}</text>\n')
+    out.append("\t</g>\n")
+    return "".join(out)
+
+
 def bracket(data, inset=0.0):
     """沖縄の引き出し線。角を半径 BR で丸めた path にする。"""
     BR = 3
@@ -154,6 +181,11 @@ def bracket(data, inset=0.0):
             f'stroke="#333333" stroke-width="0.5" stroke-linecap="round" d="{d}"/>\n')
 
 
+def write(name, parts):
+    with open(os.path.join(ROOT, "dist", name), "w", encoding="utf-8") as f:
+        f.write("".join(parts))
+
+
 def main():
     data = load()
     w, h = data["grid"]["cols"], data["grid"]["rows"]
@@ -161,39 +193,38 @@ def main():
     order = sorted(data["legend"].items(), key=lambda kv: kv[1]["code"])
 
     # --- 1) フラット白地図 ---
-    lines = [header(data, w, h),
-             '\t<g id="prefectures" fill="#E8E8E8" stroke="#FFFFFF" '
-             'stroke-width="1" stroke-linejoin="round">\n']
+    body = [header(data, w, h),
+            '\t<g id="prefectures" fill="#E8E8E8" stroke="#FFFFFF" '
+            'stroke-width="1" stroke-linejoin="round">\n']
     for ch, meta in order:
         pts = trace_outline(bykey[ch])
         p = " ".join(f"{x * CELL},{y * CELL}" for x, y in pts)
-        lines.append(f'\t\t<polygon id="JP-{meta["code"]}" data-name="{meta["name"]}" '
-                     f'data-romaji="{meta["romaji"]}" points="{p}">'
-                     f'<title>{meta["name"]}</title></polygon>\n')
-    lines.append("\t</g>\n")
-    lines.append(bracket(data))
-    lines.append("</svg>\n")
-    with open(os.path.join(ROOT, "dist", "japan.svg"), "w", encoding="utf-8") as f:
-        f.write("".join(lines))
+        body.append(f'\t\t<polygon id="JP-{meta["code"]}" data-name="{meta["name"]}" '
+                    f'data-romaji="{meta["romaji"]}" points="{p}">'
+                    f'<title>{meta["name"]}</title></polygon>\n')
+    body.append("\t</g>\n")
+    body.append(bracket(data))
+    write("japan.svg", body + ["</svg>\n"])
+    write("japan-labeled.svg", body + [labels(data, bykey), "</svg>\n"])
 
     # --- 2) 角丸・隙間ありスタイル ---
     INSET, R = 1.0, 3.0
-    lines = [header(data, w, h),
-             '\t<g id="prefectures" fill="#F5B090">\n']
+    body = [header(data, w, h), '\t<g id="prefectures" fill="#F5B090">\n']
     for ch, meta in order:
         pts = trace_outline(bykey[ch])
         pts = [(x * CELL, y * CELL) for x, y in pts]
         d = rounded_path(inset_polygon(pts, INSET), R)
-        lines.append(f'\t\t<path id="JP-{meta["code"]}" data-name="{meta["name"]}" '
-                     f'data-romaji="{meta["romaji"]}" d="{d}">'
-                     f'<title>{meta["name"]}</title></path>\n')
-    lines.append("\t</g>\n")
-    lines.append(bracket(data, inset=INSET))
-    lines.append("</svg>\n")
-    with open(os.path.join(ROOT, "dist", "japan-rounded.svg"), "w", encoding="utf-8") as f:
-        f.write("".join(lines))
+        body.append(f'\t\t<path id="JP-{meta["code"]}" data-name="{meta["name"]}" '
+                    f'data-romaji="{meta["romaji"]}" d="{d}">'
+                    f'<title>{meta["name"]}</title></path>\n')
+    body.append("\t</g>\n")
+    body.append(bracket(data, inset=INSET))
+    write("japan-rounded.svg", body + ["</svg>\n"])
+    write("japan-rounded-labeled.svg", body + [labels(data, bykey), "</svg>\n"])
 
-    print(f"OK: dist/japan.svg, dist/japan-rounded.svg ({len(order)} prefectures)")
+    print(f"OK: dist/japan.svg, dist/japan-rounded.svg, "
+          f"dist/japan-labeled.svg, dist/japan-rounded-labeled.svg "
+          f"({len(order)} prefectures)")
 
 
 if __name__ == "__main__":
