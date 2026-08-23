@@ -47,7 +47,7 @@ container.innerHTML = svg;
 document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 ```
 
-各都道府県の要素には `id`（JP-01〜JP-47）、`data-name`（日本語名）、`data-romaji` が付いています。動作する例は [examples/](examples/) にあります。
+各都道府県の要素には `id`（JP-01〜JP-47）、`data-name`（日本語名）、`data-romaji` が付いています。動作する例は [examples/](examples/) にあります（スクリーンショット付き。`fetch` を使うため、ファイルを直接開かず `python3 -m http.server` などローカルサーバー経由で開いてください）。
 
 ### AIに読ませる
 
