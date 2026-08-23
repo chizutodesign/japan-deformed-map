@@ -7,13 +7,13 @@ usage:
     python3 build/generate.py
 
 出力:
-    dist/japan.svg                県名入り・角丸（既定）
-    dist/japan-flat.svg           県名入り・白い境界線のフラットなスタイル
-    dist/japan-nolabel.svg        県名なし・角丸
-    dist/japan-flat-nolabel.svg   県名なし・フラット
+    svg/japan.svg                県名入り・角丸（既定）
+    svg/japan-flat.svg           県名入り・白い境界線のフラットなスタイル
+    svg/japan-nolabel.svg        県名なし・角丸
+    svg/japan-flat-nolabel.svg   県名なし・フラット
 
 基本形は「角丸＋県名入り」。-flat と -nolabel は引き算の修飾語。
-何も指定せず dist/japan.svg を取った人がそのまま使える見た目にしてある。
+何も指定せず svg/japan.svg を取った人がそのまま使える見た目にしてある。
 """
 import json
 import os
@@ -199,7 +199,7 @@ def bracket(data, inset=0.0):
 
 
 def write(name, parts):
-    with open(os.path.join(ROOT, "dist", name), "w", encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "svg", name), "w", encoding="utf-8") as f:
         f.write("".join(parts))
 
 
@@ -239,8 +239,8 @@ def main():
     write("japan-nolabel.svg", body + ["</svg>\n"])
     write("japan.svg", body + [labels(data, bykey), "</svg>\n"])
 
-    print(f"OK: dist/japan.svg, dist/japan-flat.svg, "
-          f"dist/japan-nolabel.svg, dist/japan-flat-nolabel.svg "
+    print(f"OK: svg/japan.svg, svg/japan-flat.svg, "
+          f"svg/japan-nolabel.svg, svg/japan-flat-nolabel.svg "
           f"({len(order)} prefectures)")
 
 

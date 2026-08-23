@@ -5,7 +5,7 @@
   → http://localhost:8000/examples/svg-choropleth.html
 -->
 <!--
-  「値の算出は data/japan.grid.json、地図の描画は dist/*.svg」という
+  「値の算出は data/japan.grid.json、地図の描画は svg/*.svg」という
   このリポジトリの想定どおりの組み合わせのサンプルです。
   題材は県名の画数合計。地図の塗り分け方を示すための無害な例で、
   何かの優劣を表すものではありません。
@@ -58,7 +58,7 @@ const CLASSES = [
 
 Promise.all([
   fetch("../data/japan.grid.json").then(r => r.json()),
-  fetch("../dist/japan-nolabel.svg").then(r => r.text()),
+  fetch("../svg/japan-nolabel.svg").then(r => r.text()),
 ]).then(([grid, svg]) => {
   document.getElementById("wrap").innerHTML = svg;
 

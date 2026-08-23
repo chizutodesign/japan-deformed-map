@@ -42,7 +42,7 @@ def main():
         print("NG: legend のコードが 01-47 と一致しません")
         ok = False
 
-    with open(os.path.join(ROOT, "dist", "japan-flat-nolabel.svg"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "svg", "japan-flat-nolabel.svg"), encoding="utf-8") as f:
         svg = f.read()
 
     got = {}
@@ -61,9 +61,9 @@ def main():
 
     # ラベル版に47県すべての名前が入っているか
     for fn in ("japan.svg", "japan-flat.svg"):
-        path = os.path.join(ROOT, "dist", fn)
+        path = os.path.join(ROOT, "svg", fn)
         if not os.path.exists(path):
-            print(f"NG: dist/{fn} がありません")
+            print(f"NG: svg/{fn} がありません")
             ok = False
             continue
         with open(path, encoding="utf-8") as f:
@@ -73,7 +73,7 @@ def main():
                       for v in data["legend"].values())
         # ハローと本体で各県名が2回ずつ出る
         if sorted(texts) != sorted(want * 2):
-            print(f"NG: dist/{fn} のラベルが正データと不一致（{len(texts)}件）")
+            print(f"NG: svg/{fn} のラベルが正データと不一致（{len(texts)}件）")
             ok = False
 
     if got != truth:
