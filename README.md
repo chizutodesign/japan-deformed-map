@@ -70,11 +70,17 @@ python3 build/generate.py
 
 ## ライセンス
 
-[CC BY 4.0](LICENSE) — 商用・非商用を問わず、複製・改変・再配布ができます。使用の際は以下のようなクレジットを表示してください。
+地図データと画像（`data/` `dist/` `assets/`）は [CC0 1.0](LICENSE) です。**権利を放棄しています。**
+クレジット表示なしで、商用・非商用を問わず自由に利用・改変・再配布できます。許諾を求める必要もありません。
+
+クレジットは任意ですが、表示いただけると嬉しいです。
 
 ```
-デフォルメ日本地図 by chizutodesign (CC BY 4.0)
+デフォルメ日本地図 by chizutodesign
+https://github.com/chizutodesign/japan-deformed-map
 ```
+
+スクリプト（`build/` `examples/`）は [MIT License](LICENSE-CODE) です。
 
 ## 作者
 
