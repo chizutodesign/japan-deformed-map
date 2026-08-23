@@ -19,13 +19,25 @@
 
 ## 使い方
 
+### ダウンロードして使う
+
+[Releases](https://github.com/chizutodesign/japan-deformed-map/releases/latest) の **Source code (zip)** に一式が入っています。展開して `dist/japan.svg` を Illustrator・Figma・Inkscape などで開けば、そのまま編集できます。
+
+SVG1枚だけ欲しい場合は、次のURLを開いて保存してください。
+
+https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.0.0/dist/japan.svg
+
 ### HTMLで表示する
+
+自分のWebページのHTMLに次の1行を書くと、地図が画像として表示されます。ファイルを自分のサーバーに置く必要はありません。
 
 ```html
 <img src="https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v1.0.0/dist/japan.svg" alt="日本地図">
 ```
 
 ### JavaScriptで塗り分ける
+
+`<img>` で貼った地図は1枚の絵なので、県ごとに色を変えることはできません。塗り分けたいときはSVGをページ内に展開します。
 
 ```js
 const svg = await (await fetch("dist/japan.svg")).text();
