@@ -22,11 +22,12 @@
 const values = { "JP-01": 152, "JP-13": 90, "JP-23": 123, "JP-27": 108,
                  "JP-28": 82, "JP-14": 55, "JP-12": 31, "JP-11": 29 };
 
+// 単一色相の明→暗ランプ。データなしは無彩色にして、値の一部に見えないようにする
 const color = v =>
-  v === undefined ? "#D8EBF5" :   // データなし
-  v >= 100 ? "#E06C60" :
-  v >= 50  ? "#F09082" :
-  v >= 10  ? "#FACEA7" : "#FEEAB4";
+  v === undefined ? "#EAEAE8" :   // データなし
+  v >= 100 ? "#A63A2E" :
+  v >= 50  ? "#D2604B" :
+  v >= 10  ? "#E88A6B" : "#F5B090";
 
 fetch("../dist/japan-rounded.svg")
   .then(r => r.text())
