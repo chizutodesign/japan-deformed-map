@@ -20,6 +20,8 @@ python3 -m http.server
 
 ## svg-choropleth.html
 
-`dist/japan-rounded.svg` を読み込んでページに展開し、都道府県ごとに値に応じた色を塗ります（コロプレス図）。`id="JP-13"` のような識別子を使って塗り分けます。
+`data/japan.grid.json` から値を作り、`dist/japan-rounded.svg` を展開して `id="JP-13"` のような識別子で塗り分けます（コロプレス図）。「値の算出はJSON、描画はSVG」という想定どおりの組み合わせの例です。
+
+題材は県名の画数合計です。塗り分けの手順を示すための無害な題材で、何かの優劣を表すものではありません。
 
 ![svg-choropleth.html の実行画面](svg-choropleth.png)
