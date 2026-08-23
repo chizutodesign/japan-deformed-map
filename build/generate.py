@@ -24,9 +24,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 CELL = 10        # 1セル = 10 SVG units
 PAD = 5          # viewBox の外周パディング（線のクリップ防止）
-FONT = ('"IPAGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", '
-        '"Noto Sans JP", "Yu Gothic", Meiryo, sans-serif')
+# Illustrator は先頭のフォント名を見て「無い」と警告を出すので、
+# 実機に入っている可能性が高い順に並べる。IPAGothic は Linux 環境向けの保険。
+FONT = ('"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, '
+        '"Noto Sans JP", "IPAGothic", sans-serif')
 FONT_SIZE = 7    # ラベルの文字サイズ（最小の県が 20 units 角なので 2文字が収まる）
+BASELINE = "0.4em"  # 文字の縦中央合わせ。dominant-baseline は Illustrator が解釈しないため dy を使う
 HALO = 1.2       # 県名の縁取りの太さ。太いと「白い座布団」に見え、細いと濃い塗りで沈む
 
 
@@ -174,7 +177,7 @@ def labels(data, bykey, color="#333333", halo="#FFFFFF"):
         out = [f'\t<g id="{gid}" font-family=\'{FONT}\' font-size="{FONT_SIZE}" '
                f'text-anchor="middle" {extra}>\n']
         for x, y, name in texts:
-            out.append(f'\t\t<text x="{x}" y="{y}" dominant-baseline="central">{name}</text>\n')
+            out.append(f'\t\t<text x="{x}" y="{y}" dy="{BASELINE}">{name}</text>\n')
         out.append("\t</g>\n")
         return "".join(out)
 
