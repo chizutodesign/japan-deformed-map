@@ -71,7 +71,8 @@ def main():
         want = sorted(v["name"] if v["name"] == "北海道"
                       else re.sub(r"[都府県]$", "", v["name"])
                       for v in data["legend"].values())
-        if sorted(texts) != want:
+        # ハローと本体で各県名が2回ずつ出る
+        if sorted(texts) != sorted(want * 2):
             print(f"NG: dist/{fn} のラベルが正データと不一致（{len(texts)}件）")
             ok = False
 

@@ -153,20 +153,33 @@ def short_name(name):
     return name if name == "北海道" else re.sub(r"[都府県]$", "", name)
 
 
-def labels(data, bykey, color="#333333"):
-    """県名ラベル。全県が矩形なので外接矩形の中心が必ず県の内側に入る。"""
+def labels(data, bykey, color="#333333", halo="#FFFFFF"):
+    """県名ラベル。全県が矩形なので外接矩形の中心が必ず県の内側に入る。
+
+    白いハロー（縁取り）を別グループとして下に敷く。塗り分けで背景が濃くなっても
+    県名が読めるようにするため。paint-order 属性は対応しない描画系があるので使わず、
+    テキストを2枚重ねる方式にしている。ハローが不要なら #label-halo を消せばよい。
+    """
     order = sorted(data["legend"].items(), key=lambda kv: kv[1]["code"])
-    out = [f'\t<g id="labels" font-family=\'{FONT}\' font-size="{FONT_SIZE}" '
-           f'text-anchor="middle" fill="{color}">\n']
+    pos = []
     for ch, meta in order:
         xs = [c for c, _ in bykey[ch]]
         ys = [r for _, r in bykey[ch]]
-        cx = (min(xs) + max(xs) + 1) * CELL / 2
-        cy = (min(ys) + max(ys) + 1) * CELL / 2
-        out.append(f'\t\t<text x="{g(cx)}" y="{g(cy)}" dominant-baseline="central">'
-                   f'{short_name(meta["name"])}</text>\n')
-    out.append("\t</g>\n")
-    return "".join(out)
+        pos.append((g((min(xs) + max(xs) + 1) * CELL / 2),
+                    g((min(ys) + max(ys) + 1) * CELL / 2),
+                    short_name(meta["name"])))
+
+    def group(gid, extra, texts=pos):
+        out = [f'\t<g id="{gid}" font-family=\'{FONT}\' font-size="{FONT_SIZE}" '
+               f'text-anchor="middle" {extra}>\n']
+        for x, y, name in texts:
+            out.append(f'\t\t<text x="{x}" y="{y}" dominant-baseline="central">{name}</text>\n')
+        out.append("\t</g>\n")
+        return "".join(out)
+
+    return (group("label-halo", f'fill="{halo}" stroke="{halo}" stroke-width="2" '
+                                f'stroke-linejoin="round"')
+            + group("labels", f'fill="{color}"'))
 
 
 def bracket(data, inset=0.0):

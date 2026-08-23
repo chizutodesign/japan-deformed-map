@@ -31,7 +31,7 @@
 
 グリッドJSONのセルをそのまま描画すると、都道府県が分割されたタイル状の表現になります。それを意図している場合を除き、描画にはSVGを使ってください。
 
-塗り分けるときも県名入りのファイルをそのまま使えます。`<g id="labels">` は図形とは別のグループなので、塗りが濃くて県名が読めなくなったら、その `fill` を白にするだけです。
+塗り分けるときも県名入りのファイルをそのまま使えます。県名には白い縁取り（`<g id="label-halo">`）を敷いてあるので、塗りが濃くても薄くてもそのまま読めます。文字色を調整する必要はありません。縁取りが不要なら、そのグループを消してください。
 
 ## 使い方
 
@@ -58,8 +58,7 @@ https://cdn.jsdelivr.net/gh/chizutodesign/japan-deformed-map@v2.0.0/dist/japan.s
 ```js
 const svg = await (await fetch("dist/japan.svg")).text();
 container.innerHTML = svg;
-document.querySelector("#JP-13").setAttribute("fill", "tomato");  // 東京都
-document.querySelector("#labels").setAttribute("fill", "#fff");   // 県名を白にする
+document.querySelector("#JP-13").setAttribute("fill", "tomato"); // 東京都
 ```
 
 各都道府県の要素には `id`（JP-01〜JP-47）、`data-name`（日本語名）、`data-romaji` が付いています。動作する例は [examples/](examples/) にあります（スクリーンショット付き。`fetch` を使うため、ファイルを直接開かず `python3 -m http.server` などローカルサーバー経由で開いてください）。
